@@ -1,0 +1,31 @@
+service: gb-tech-test
+frameworkVersion: '3'
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  hello:
+    handler: src/application/functions/hello/handler.main
+    events:
+      - http:
+          path: /hello
+          method: get
+
+package:
+  individually: true
+
+custom:
+  esbuild:
+    bundle: true
+    minify: false
+    exclude: ['aws-sdk']
+    target: 'node18'
+    platform: 'node'
+    watch:
+      pattern: ['src/**/*.ts']
