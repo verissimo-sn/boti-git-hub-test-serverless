@@ -28,7 +28,7 @@ export default class Repo {
     this.validate();
   }
 
-  validate() {
+  private validate() {
     const repoSchema = z.object({
       id: z.string().nonempty(),
       githubId: z.number(),

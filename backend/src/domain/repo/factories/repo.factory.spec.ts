@@ -28,7 +28,6 @@ describe('Unit: Repo factory', () => {
       homePage: 'https://go.dev',
       stargazers: 109460,
       languageId: new UniqueIdentifier().value,
-      license: 'bsd-3-clause',
       visibility: 'public',
     };
   });

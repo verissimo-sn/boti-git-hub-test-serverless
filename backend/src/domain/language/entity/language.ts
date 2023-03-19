@@ -1,12 +1,28 @@
+import { z } from 'zod';
+
 import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
+import Repo from '../../repo/entity/repo';
 
 export default class Language {
   private readonly _id: UniqueIdentifier;
-  private readonly _lastUpdate: Date;
+  private readonly _repos: Repo[] = [];
 
-  constructor(private readonly _name: string, id?: string, lastUpdate?: Date) {
+  constructor(private readonly _name: string, id?: string) {
     this._id = id ? new UniqueIdentifier(id) : new UniqueIdentifier();
-    this._lastUpdate = lastUpdate ?? new Date();
+    this.validate();
+  }
+
+  private validate() {
+    const languageSchema = z.object({
+      id: z.string().nonempty(),
+      name: z.string().nonempty(),
+      repos: z.array(z.any()),
+    });
+    languageSchema.parse({
+      id: this.id,
+      name: this.name,
+      repos: this.repos,
+    });
   }
 
   get id(): string {
@@ -17,7 +33,26 @@ export default class Language {
     return this._name;
   }
 
-  get lastUpdate(): Date {
-    return this._lastUpdate;
+  get repos() {
+    return this._repos.map((repo) => ({
+      id: repo.id,
+      githubId: repo.githubId,
+      name: repo.name,
+      description: repo.description,
+      fullName: repo.fullName,
+      private: repo.private,
+      owner: repo.owner,
+      url: repo.url,
+      contribuitors: repo.contribuitors,
+      homePage: repo.homePage,
+      stargazers: repo.stargazers,
+      languageId: repo.languageId,
+      visibility: repo.visibility,
+    }));
+  }
+
+  addRepo(repo: Repo) {
+    this._repos.push(repo);
+    this.validate();
   }
 }
