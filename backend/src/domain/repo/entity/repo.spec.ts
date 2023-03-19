@@ -114,4 +114,24 @@ describe('Unit: Repo entity', () => {
     expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
+
+  it('should validate a repo', () => {
+    expect(
+      () =>
+        new Repo(
+          123,
+          '',
+          '',
+          '',
+          repoProps.private,
+          repoProps.owner,
+          '',
+          repoProps.contribuitors,
+          '',
+          repoProps.stargazers,
+          '',
+          ''
+        )
+    ).toThrowError();
+  });
 });

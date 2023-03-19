@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
 import Contributor from '../value-object/contributor';
 import Owner from '../value-object/owner';
@@ -23,6 +25,40 @@ export default class Repo {
   ) {
     this._id = id ? new UniqueIdentifier(id) : new UniqueIdentifier();
     this._languageId = new UniqueIdentifier(languageId);
+    this.validate();
+  }
+
+  validate() {
+    const repoSchema = z.object({
+      id: z.string().nonempty(),
+      githubId: z.number(),
+      name: z.string().nonempty(),
+      description: z.string().nonempty(),
+      fullName: z.string().nonempty(),
+      private: z.boolean(),
+      owner: z.any(),
+      url: z.string().nonempty(),
+      contribuitors: z.array(z.any()).nonempty(),
+      homePage: z.string().nonempty(),
+      stargazers: z.number(),
+      languageId: z.string().nonempty(),
+      visibility: z.string().nonempty(),
+    });
+    repoSchema.parse({
+      id: this.id,
+      githubId: this.githubId,
+      name: this.name,
+      description: this.description,
+      fullName: this.fullName,
+      private: this.private,
+      owner: this.owner,
+      url: this.url,
+      contribuitors: this.contribuitors,
+      homePage: this.homePage,
+      stargazers: this.stargazers,
+      languageId: this.languageId,
+      visibility: this.visibility,
+    });
   }
 
   get id(): string {
