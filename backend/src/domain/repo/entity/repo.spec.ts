@@ -1,4 +1,5 @@
 import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
+import Contributor from '../value-object/contributor';
 import Owner from '../value-object/owner';
 import Repo from './repo';
 
@@ -9,6 +10,11 @@ describe('Unit: Repo entity', () => {
       'https://avatars.githubusercontent.com/u/4314092?v=4',
       'https://github.com/golang'
     );
+    const contributor = new Contributor(
+      'rsc',
+      'https://avatars.githubusercontent.com/u/104030?v=4',
+      'https://github.com/rsc'
+    );
     const repoProps = {
       githubId: 23096959,
       name: 'go',
@@ -17,7 +23,7 @@ describe('Unit: Repo entity', () => {
       private: false,
       owner,
       url: 'https://github.com/golang/go',
-      contribuitors: 'https://api.github.com/repos/golang/go/contributors',
+      contribuitors: [contributor],
       homePage: 'https://go.dev',
       stargazers: 109460,
       language: 'Go',
@@ -51,7 +57,12 @@ describe('Unit: Repo entity', () => {
       pageUrl: repoProps.owner.pageUrl,
     });
     expect(repo.url).toStrictEqual(repoProps.url);
-    expect(repo.contribuitors).toStrictEqual(repoProps.contribuitors);
+    expect(repo.contribuitors.length).toBe(1);
+    expect(repo.contribuitors[0].name).toStrictEqual(contributor.name);
+    expect(repo.contribuitors[0].avatarUrl).toStrictEqual(
+      contributor.avatarUrl
+    );
+    expect(repo.contribuitors[0].pageUrl).toStrictEqual(contributor.pageUrl);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
     expect(repo.language).toStrictEqual(repoProps.language);
@@ -65,6 +76,11 @@ describe('Unit: Repo entity', () => {
       'https://avatars.githubusercontent.com/u/4314092?v=4',
       'https://github.com/golang'
     );
+    const contributor = new Contributor(
+      'rsc',
+      'https://avatars.githubusercontent.com/u/104030?v=4',
+      'https://github.com/rsc'
+    );
     const repoProps = {
       githubId: 23096959,
       name: 'go',
@@ -73,7 +89,7 @@ describe('Unit: Repo entity', () => {
       private: false,
       owner,
       url: 'https://github.com/golang/go',
-      contribuitors: 'https://api.github.com/repos/golang/go/contributors',
+      contribuitors: [contributor],
       homePage: 'https://go.dev',
       stargazers: 109460,
       language: 'Go',
@@ -109,7 +125,12 @@ describe('Unit: Repo entity', () => {
       pageUrl: repoProps.owner.pageUrl,
     });
     expect(repo.url).toStrictEqual(repoProps.url);
-    expect(repo.contribuitors).toStrictEqual(repoProps.contribuitors);
+    expect(repo.contribuitors.length).toBe(1);
+    expect(repo.contribuitors[0].name).toStrictEqual(contributor.name);
+    expect(repo.contribuitors[0].avatarUrl).toStrictEqual(
+      contributor.avatarUrl
+    );
+    expect(repo.contribuitors[0].pageUrl).toStrictEqual(contributor.pageUrl);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
     expect(repo.language).toStrictEqual(repoProps.language);

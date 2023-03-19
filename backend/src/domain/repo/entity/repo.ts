@@ -1,4 +1,5 @@
 import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
+import Contributor from '../value-object/contributor';
 import Owner from '../value-object/owner';
 
 export default class Repo {
@@ -12,7 +13,7 @@ export default class Repo {
     private readonly _private: boolean,
     private readonly _owner: Owner,
     private readonly _url: string,
-    private readonly _contribuitors: string, // value Object
+    private readonly _contribuitors: Contributor[],
     private readonly _homePage: string,
     private readonly _stargazers: number,
     private readonly _language: string, // Language Entity
@@ -51,8 +52,12 @@ export default class Repo {
   get url(): string {
     return this._url;
   }
-  get contribuitors(): string {
-    return this._contribuitors;
+  get contribuitors() {
+    return this._contribuitors.map((contributor) => ({
+      name: contributor.name,
+      avatarUrl: contributor.avatarUrl,
+      pageUrl: contributor.pageUrl,
+    }));
   }
   get homePage(): string {
     return this._homePage;
