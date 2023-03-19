@@ -1,5 +1,4 @@
-import UniqueIdentifier from '@domain/entity/@shared/value-objects/unique-identifier';
-
+import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
 import Language from '../entity/language';
 import LanguageFactory from './language.factory';
 

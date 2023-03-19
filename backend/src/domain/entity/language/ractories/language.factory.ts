@@ -4,14 +4,16 @@ export default class LanguageFactory {
   static create(languageProps: LanguageProps): Language {
     return new Language(
       languageProps.name,
-      languageProps.id,
-      languageProps.lastUpdate
+      languageProps?.id,
+      languageProps?.lastUpdate
     );
   }
 }
 
-type LanguageProps = {
+type LanguageProps = Pick<
+  Language,
+  keyof Omit<Language, 'id' | 'lastUpdate'>
+> & {
   id?: string;
-  name: string;
   lastUpdate?: Date;
 };
