@@ -27,7 +27,6 @@ describe('Unit: Repo entity', () => {
       homePage: 'https://go.dev',
       stargazers: 109460,
       language: 'Go',
-      license: 'bsd-3-clause',
       visibility: 'public',
     };
     const repo = new Repo(
@@ -42,7 +41,6 @@ describe('Unit: Repo entity', () => {
       repoProps.homePage,
       repoProps.stargazers,
       repoProps.language,
-      repoProps.license,
       repoProps.visibility
     );
     expect(repo.id).toBeDefined();
@@ -66,7 +64,6 @@ describe('Unit: Repo entity', () => {
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
     expect(repo.language).toStrictEqual(repoProps.language);
-    expect(repo.license).toStrictEqual(repoProps.license);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 
@@ -93,7 +90,6 @@ describe('Unit: Repo entity', () => {
       homePage: 'https://go.dev',
       stargazers: 109460,
       language: 'Go',
-      license: 'bsd-3-clause',
       visibility: 'public',
       id: new UniqueIdentifier().value,
     };
@@ -109,7 +105,6 @@ describe('Unit: Repo entity', () => {
       repoProps.homePage,
       repoProps.stargazers,
       repoProps.language,
-      repoProps.license,
       repoProps.visibility,
       repoProps.id
     );
@@ -134,7 +129,6 @@ describe('Unit: Repo entity', () => {
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
     expect(repo.language).toStrictEqual(repoProps.language);
-    expect(repo.license).toStrictEqual(repoProps.license);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 });

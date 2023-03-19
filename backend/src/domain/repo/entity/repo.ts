@@ -17,7 +17,6 @@ export default class Repo {
     private readonly _homePage: string,
     private readonly _stargazers: number,
     private readonly _language: string, // Language Entity
-    private readonly _license: string, // value object
     private readonly _visibility: string,
     id?: string
   ) {
@@ -67,9 +66,6 @@ export default class Repo {
   }
   get language(): string {
     return this._language;
-  }
-  get license(): string {
-    return this._license;
   }
   get visibility(): string {
     return this._visibility;
