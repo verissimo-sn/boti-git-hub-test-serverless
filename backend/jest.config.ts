@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { pathsToModuleNameMapper } = require('ts-jest');
+import { pathsToModuleNameMapper } from 'ts-jest';
 
-const { compilerOptions } = require('./tsconfig.paths.json');
+import { compilerOptions } from './tsconfig.paths.json';
 
-module.exports = {
+export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleDirectories: ['node_modules', 'src'],
   modulePaths: ['node_modules', '<rootDir>'],
+  testMatch: ['**/?(*.)+(spec|test).ts'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   testTimeout: 30000,
 };

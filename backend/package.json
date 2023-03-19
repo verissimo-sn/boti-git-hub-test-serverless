@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "sls offline start -s dev",
     "test": "jest --runInBand --detectOpenHandles",
+    "test:watch": "jest --watch --runInBand --detectOpenHandles",
     "test:coverage": "jest --coverage --runInBand --detectOpenHandles",
     "prepare": "husky install"
   },
