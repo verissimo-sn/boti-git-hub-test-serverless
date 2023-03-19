@@ -1,15 +1,21 @@
 import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
+import Owner from '../value-object/owner';
 import Repo from './repo';
 
 describe('Unit: Repo entity', () => {
   it('should create a Repo', () => {
+    const owner = new Owner(
+      'golang',
+      'https://avatars.githubusercontent.com/u/4314092?v=4',
+      'https://github.com/golang'
+    );
     const repoProps = {
       githubId: 23096959,
       name: 'go',
       description: 'The Go programming language',
       fullName: 'golang/go',
       private: false,
-      owner: 'golang',
+      owner,
       url: 'https://github.com/golang/go',
       contribuitors: 'https://api.github.com/repos/golang/go/contributors',
       homePage: 'https://go.dev',
@@ -39,7 +45,11 @@ describe('Unit: Repo entity', () => {
     expect(repo.description).toStrictEqual(repoProps.description);
     expect(repo.fullName).toStrictEqual(repoProps.fullName);
     expect(repo.private).toStrictEqual(repoProps.private);
-    expect(repo.owner).toStrictEqual(repoProps.owner);
+    expect(repo.owner).toStrictEqual({
+      name: repoProps.owner.name,
+      avatarUrl: repoProps.owner.avatarUrl,
+      pageUrl: repoProps.owner.pageUrl,
+    });
     expect(repo.url).toStrictEqual(repoProps.url);
     expect(repo.contribuitors).toStrictEqual(repoProps.contribuitors);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
@@ -50,13 +60,18 @@ describe('Unit: Repo entity', () => {
   });
 
   it('should restore a repo', () => {
+    const owner = new Owner(
+      'golang',
+      'https://avatars.githubusercontent.com/u/4314092?v=4',
+      'https://github.com/golang'
+    );
     const repoProps = {
       githubId: 23096959,
       name: 'go',
       description: 'The Go programming language',
       fullName: 'golang/go',
       private: false,
-      owner: 'golang',
+      owner,
       url: 'https://github.com/golang/go',
       contribuitors: 'https://api.github.com/repos/golang/go/contributors',
       homePage: 'https://go.dev',
@@ -88,7 +103,11 @@ describe('Unit: Repo entity', () => {
     expect(repo.description).toStrictEqual(repoProps.description);
     expect(repo.fullName).toStrictEqual(repoProps.fullName);
     expect(repo.private).toStrictEqual(repoProps.private);
-    expect(repo.owner).toStrictEqual(repoProps.owner);
+    expect(repo.owner).toStrictEqual({
+      name: repoProps.owner.name,
+      avatarUrl: repoProps.owner.avatarUrl,
+      pageUrl: repoProps.owner.pageUrl,
+    });
     expect(repo.url).toStrictEqual(repoProps.url);
     expect(repo.contribuitors).toStrictEqual(repoProps.contribuitors);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);

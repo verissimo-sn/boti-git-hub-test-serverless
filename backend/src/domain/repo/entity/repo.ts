@@ -1,4 +1,5 @@
 import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
+import Owner from '../value-object/owner';
 
 export default class Repo {
   private readonly _id: UniqueIdentifier;
@@ -9,7 +10,7 @@ export default class Repo {
     private readonly _description: string,
     private readonly _fullName: string,
     private readonly _private: boolean,
-    private readonly _owner: string, // value Object
+    private readonly _owner: Owner,
     private readonly _url: string,
     private readonly _contribuitors: string, // value Object
     private readonly _homePage: string,
@@ -40,8 +41,12 @@ export default class Repo {
   get private(): boolean {
     return this._private;
   }
-  get owner(): string {
-    return this._owner;
+  get owner() {
+    return {
+      name: this._owner.name,
+      avatarUrl: this._owner.avatarUrl,
+      pageUrl: this._owner.pageUrl,
+    };
   }
   get url(): string {
     return this._url;
