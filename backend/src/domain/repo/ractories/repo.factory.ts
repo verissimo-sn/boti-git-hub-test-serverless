@@ -27,7 +27,7 @@ export default class RepoFactory {
       contribuitors,
       props.homePage,
       props.stargazers,
-      props.language,
+      props.languageId,
       props.visibility,
       props?.id
     );

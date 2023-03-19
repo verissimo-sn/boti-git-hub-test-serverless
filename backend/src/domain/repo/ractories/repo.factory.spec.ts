@@ -27,7 +27,7 @@ describe('Unit: Repo factory', () => {
       ],
       homePage: 'https://go.dev',
       stargazers: 109460,
-      language: 'Go',
+      languageId: new UniqueIdentifier().value,
       license: 'bsd-3-clause',
       visibility: 'public',
     };
@@ -47,7 +47,7 @@ describe('Unit: Repo factory', () => {
     expect(repo.contribuitors).toStrictEqual(repoProps.contribuitors);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
-    expect(repo.language).toStrictEqual(repoProps.language);
+    expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 
@@ -69,7 +69,7 @@ describe('Unit: Repo factory', () => {
     expect(repo.contribuitors).toStrictEqual(repoProps.contribuitors);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
-    expect(repo.language).toStrictEqual(repoProps.language);
+    expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 });

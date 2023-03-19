@@ -4,6 +4,7 @@ import Owner from '../value-object/owner';
 
 export default class Repo {
   private readonly _id: UniqueIdentifier;
+  private readonly _languageId: UniqueIdentifier;
 
   constructor(
     private readonly _githubId: number,
@@ -16,11 +17,12 @@ export default class Repo {
     private readonly _contribuitors: Contributor[],
     private readonly _homePage: string,
     private readonly _stargazers: number,
-    private readonly _language: string, // Language Entity
+    languageId: string,
     private readonly _visibility: string,
     id?: string
   ) {
     this._id = id ? new UniqueIdentifier(id) : new UniqueIdentifier();
+    this._languageId = new UniqueIdentifier(languageId);
   }
 
   get id(): string {
@@ -64,8 +66,8 @@ export default class Repo {
   get stargazers(): number {
     return this._stargazers;
   }
-  get language(): string {
-    return this._language;
+  get languageId(): string {
+    return this._languageId.value;
   }
   get visibility(): string {
     return this._visibility;
