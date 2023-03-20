@@ -1,3 +1,3 @@
 export default interface IHttpClient {
-  get(url: string, query?: string): Promise<any>;
+  get(url: string, query?: { [key: string]: string }): Promise<any>;
 }
