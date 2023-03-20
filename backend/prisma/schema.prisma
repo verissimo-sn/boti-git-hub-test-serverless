@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Language {
+  id    String @id @map("_id")
+  name  String
+  repos Repo[]
+}
+
+model Repo {
+  id           String         @id @map("_id")
+  language     Language       @relation(fields: [languageId], references: [id])
+  languageId   String
+  name         String
+  description  String?
+  githubId     Int
+  fullName     String
+  private      Boolean
+  owner        Owner
+  url          String?
+  contributors Contributors[]
+  homePage     String?
+  stargazers   Int
+  visibility   String?
+}
+
+type Owner {
+  name      String
+  avatarUrl String?
+  pageUrl   String?
+}
+
+type Contributors {
+  name      String
+  avatarUrl String?
+  pageUrl   String?
+}
