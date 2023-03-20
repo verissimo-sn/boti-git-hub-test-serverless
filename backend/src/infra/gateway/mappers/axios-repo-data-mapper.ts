@@ -1,7 +1,13 @@
+import Repo from '../../../domain/repo/entity/repo';
+import RepoFactory from '../../../domain/repo/factories/repo.factory';
+
 export default class AxiosGithubRepoDataMapper {
-  static toRepoPropList(githubRepoList: GithubRepoItem[]) {
+  static toRepoPropList(
+    githubRepoList: GithubRepoItem[],
+    languageId: string
+  ): Repo[] {
     return githubRepoList.map((gitRepo) => {
-      return {
+      return RepoFactory.create({
         githubId: gitRepo.id,
         name: gitRepo.name,
         description: gitRepo.description,
@@ -21,7 +27,8 @@ export default class AxiosGithubRepoDataMapper {
         homePage: gitRepo.homepage,
         stargazers: gitRepo.stargazers_count,
         visibility: gitRepo.visibility,
-      };
+        languageId,
+      });
     });
   }
 }
