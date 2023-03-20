@@ -37,12 +37,12 @@ export default class Repo {
       fullName: z.string().nonempty(),
       private: z.boolean(),
       owner: z.any(),
-      url: z.string().nonempty(),
+      url: z.any().default(''),
       contributors: z.array(z.any()).nonempty(),
-      homePage: z.string().nonempty(),
+      homePage: z.any().default(''),
       stargazers: z.number(),
       languageId: z.string().nonempty(),
-      visibility: z.string().nonempty(),
+      visibility: z.string(),
     });
     repoSchema.parse({
       id: this.id,
