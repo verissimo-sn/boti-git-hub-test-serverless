@@ -27,7 +27,7 @@ describe('Unit: Repo entity', () => {
       private: false,
       owner,
       url: 'https://github.com/golang/go',
-      contribuitors: [contributor],
+      contributors: [contributor],
       homePage: 'https://go.dev',
       stargazers: 109460,
       languageId: new UniqueIdentifier().value,
@@ -44,7 +44,7 @@ describe('Unit: Repo entity', () => {
       repoProps.private,
       repoProps.owner,
       repoProps.url,
-      repoProps.contribuitors,
+      repoProps.contributors,
       repoProps.homePage,
       repoProps.stargazers,
       repoProps.languageId,
@@ -62,12 +62,10 @@ describe('Unit: Repo entity', () => {
       pageUrl: repoProps.owner.pageUrl,
     });
     expect(repo.url).toStrictEqual(repoProps.url);
-    expect(repo.contribuitors.length).toBe(1);
-    expect(repo.contribuitors[0].name).toStrictEqual(contributor.name);
-    expect(repo.contribuitors[0].avatarUrl).toStrictEqual(
-      contributor.avatarUrl
-    );
-    expect(repo.contribuitors[0].pageUrl).toStrictEqual(contributor.pageUrl);
+    expect(repo.contributors.length).toBe(1);
+    expect(repo.contributors[0].name).toStrictEqual(contributor.name);
+    expect(repo.contributors[0].avatarUrl).toStrictEqual(contributor.avatarUrl);
+    expect(repo.contributors[0].pageUrl).toStrictEqual(contributor.pageUrl);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
     expect(repo.languageId).toStrictEqual(repoProps.languageId);
@@ -84,7 +82,7 @@ describe('Unit: Repo entity', () => {
       repoProps.private,
       repoProps.owner,
       repoProps.url,
-      repoProps.contribuitors,
+      repoProps.contributors,
       repoProps.homePage,
       repoProps.stargazers,
       repoProps.languageId,
@@ -103,12 +101,10 @@ describe('Unit: Repo entity', () => {
       pageUrl: repoProps.owner.pageUrl,
     });
     expect(repo.url).toStrictEqual(repoProps.url);
-    expect(repo.contribuitors.length).toBe(1);
-    expect(repo.contribuitors[0].name).toStrictEqual(contributor.name);
-    expect(repo.contribuitors[0].avatarUrl).toStrictEqual(
-      contributor.avatarUrl
-    );
-    expect(repo.contribuitors[0].pageUrl).toStrictEqual(contributor.pageUrl);
+    expect(repo.contributors.length).toBe(1);
+    expect(repo.contributors[0].name).toStrictEqual(contributor.name);
+    expect(repo.contributors[0].avatarUrl).toStrictEqual(contributor.avatarUrl);
+    expect(repo.contributors[0].pageUrl).toStrictEqual(contributor.pageUrl);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
     expect(repo.languageId).toStrictEqual(repoProps.languageId);
@@ -126,7 +122,7 @@ describe('Unit: Repo entity', () => {
           repoProps.private,
           repoProps.owner,
           '',
-          repoProps.contribuitors,
+          repoProps.contributors,
           '',
           repoProps.stargazers,
           '',

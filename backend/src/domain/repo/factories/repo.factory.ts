@@ -9,7 +9,7 @@ export default class RepoFactory {
       props.owner.avatarUrl,
       props.owner.pageUrl
     );
-    const contribuitors = props.contribuitors.map((contributor) => {
+    const contributors = props.contributors.map((contributor) => {
       return new Contributor(
         contributor.name,
         contributor.avatarUrl,
@@ -24,7 +24,7 @@ export default class RepoFactory {
       props.private,
       owner,
       props.url,
-      contribuitors,
+      contributors,
       props.homePage,
       props.stargazers,
       props.languageId,
@@ -37,5 +37,5 @@ export default class RepoFactory {
 type RepoProps = Pick<Repo, keyof Omit<Repo, 'id'>> & {
   id?: string;
   owner: Pick<Owner, keyof Owner>;
-  contribuitors: Pick<Contributor, keyof Contributor>[];
+  contributors: Pick<Contributor, keyof Contributor>[];
 };

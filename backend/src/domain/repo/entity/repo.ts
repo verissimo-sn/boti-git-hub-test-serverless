@@ -16,7 +16,7 @@ export default class Repo {
     private readonly _private: boolean,
     private readonly _owner: Owner,
     private readonly _url: string,
-    private readonly _contribuitors: Contributor[],
+    private readonly _contributors: Contributor[],
     private readonly _homePage: string,
     private readonly _stargazers: number,
     languageId: string,
@@ -53,7 +53,7 @@ export default class Repo {
       private: this.private,
       owner: this.owner,
       url: this.url,
-      contribuitors: this.contribuitors,
+      contribuitors: this.contributors,
       homePage: this.homePage,
       stargazers: this.stargazers,
       languageId: this.languageId,
@@ -89,8 +89,8 @@ export default class Repo {
   get url(): string {
     return this._url;
   }
-  get contribuitors() {
-    return this._contribuitors.map((contributor) => ({
+  get contributors() {
+    return this._contributors.map((contributor) => ({
       name: contributor.name,
       avatarUrl: contributor.avatarUrl,
       pageUrl: contributor.pageUrl,
