@@ -13,7 +13,7 @@ export default class Contributor {
     const contributorSchema = z.object({
       name: z.string().nonempty(),
       avatarUrl: z.string().nonempty(),
-      pageUrl: z.string().nonempty(),
+      pageUrl: z.any().default(''),
     });
     contributorSchema.parse({
       name: this._name,

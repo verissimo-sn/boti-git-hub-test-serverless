@@ -13,7 +13,7 @@ export default class Owner {
     const ownerSchema = z.object({
       name: z.string().nonempty(),
       avatarUrl: z.string().nonempty(),
-      pageUrl: z.string().nonempty(),
+      pageUrl: z.any().default(''),
     });
     ownerSchema.parse({
       name: this._name,
