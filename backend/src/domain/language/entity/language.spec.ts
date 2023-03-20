@@ -42,7 +42,7 @@ describe('Unit: Language entity', () => {
         pageUrl: 'https://github.com/golang',
       },
       url: 'https://github.com/golang/go',
-      contribuitors: [
+      contributors: [
         {
           name: 'rsc',
           avatarUrl: 'https://avatars.githubusercontent.com/u/104030?v=4',
@@ -74,11 +74,11 @@ describe('Unit: Language entity', () => {
           pageUrl: repoProps.owner.pageUrl,
         },
         url: repoProps.url,
-        contribuitors: [
+        contributors: [
           {
-            name: repoProps.contribuitors[0].name,
-            avatarUrl: repoProps.contribuitors[0].avatarUrl,
-            pageUrl: repoProps.contribuitors[0].pageUrl,
+            name: repoProps.contributors[0].name,
+            avatarUrl: repoProps.contributors[0].avatarUrl,
+            pageUrl: repoProps.contributors[0].pageUrl,
           },
         ],
         homePage: repoProps.homePage,

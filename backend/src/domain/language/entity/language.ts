@@ -43,7 +43,7 @@ export default class Language {
       private: repo.private,
       owner: repo.owner,
       url: repo.url,
-      contribuitors: repo.contribuitors,
+      contributors: repo.contributors,
       homePage: repo.homePage,
       stargazers: repo.stargazers,
       languageId: repo.languageId,

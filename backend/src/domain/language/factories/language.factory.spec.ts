@@ -42,7 +42,7 @@ describe('Unit: Language factory', () => {
         pageUrl: 'asd',
       },
       url: 'asd',
-      contribuitors: [
+      contributors: [
         {
           name: 'rsc',
           avatarUrl: 'https://avatars.githubusercontent.com/u/104030?v=4',
