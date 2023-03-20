@@ -9,8 +9,7 @@
     "dev": "sls offline start -s dev",
     "test": "jest --runInBand --detectOpenHandles",
     "test:watch": "jest --watch --runInBand --detectOpenHandles",
-    "test:coverage": "jest --coverage --runInBand --detectOpenHandles",
-    "prepare": "husky install"
+    "test:coverage": "jest --coverage --runInBand --detectOpenHandles"
   },
   "engines": {
     "node": ">=18.14.2"
@@ -39,7 +38,6 @@
     "eslint-plugin-import-helpers": "^1.2.0",
     "eslint-plugin-prettier": "^4.0.0",
     "git-commit-msg-linter": "^4.0.7",
-    "husky": "^8.0.3",
     "jest": "^29.3.1",
     "prettier": "^2.5.1",
     "prisma": "^4.11.0",
