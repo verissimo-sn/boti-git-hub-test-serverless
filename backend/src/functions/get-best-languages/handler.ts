@@ -2,9 +2,11 @@ import { APIGatewayProxyEvent } from 'aws-lambda';
 import axios from 'axios';
 
 import GetBestLanguagesUseCase from '../../application/useCase/get-best-languages-repos';
+import PrismaAdapter from '../../infra/database/prisma-adapter';
 import RepoGatewayHttp from '../../infra/gateway/repo-gateway-http';
 import AxiosAdapter from '../../infra/http/axios-adapter';
 import LanguagePresenter from '../../infra/presenters/language.presenter';
+import PrismaLanguageRepository from '../../infra/repository/prisma-language.repository';
 
 import('dotenv/config');
 
@@ -17,7 +19,9 @@ const axiosInstance = axios.create({
 });
 const httpAdapter = new AxiosAdapter(axiosInstance);
 const repoGateway = new RepoGatewayHttp(httpAdapter);
-const useCase = new GetBestLanguagesUseCase(repoGateway);
+const dbAdapter = new PrismaAdapter();
+const languageRepository = new PrismaLanguageRepository(dbAdapter);
+const useCase = new GetBestLanguagesUseCase(repoGateway, languageRepository);
 
 export const main = async (event: APIGatewayProxyEvent) => {
   console.log(process.env.GITHUB_BEARER_TOKEN);
