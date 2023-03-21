@@ -94,9 +94,9 @@ describe('Integration: PrismaLanguageRepository', () => {
   });
 
   it('should find many languages by id', async () => {
-    const foundLanguages = await repository.getManyByIds([
-      fakeLanguages[0].id,
-      fakeLanguages[1].id,
+    const foundLanguages = await repository.getManyByName([
+      fakeLanguages[0].name,
+      fakeLanguages[1].name,
     ]);
     expect(foundLanguages[0]).toBeInstanceOf(Language);
     expect(foundLanguages[0].id).toBe(fakeLanguages[0].id);

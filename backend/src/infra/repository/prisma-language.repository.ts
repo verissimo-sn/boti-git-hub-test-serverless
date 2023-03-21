@@ -39,9 +39,9 @@ export default class PrismaLanguageRepository implements ILanguageRepository {
     await this.instance.$transaction(prepare);
   }
 
-  async getManyByIds(data: string[]): Promise<Language[]> {
+  async getManyByName(data: string[]): Promise<Language[]> {
     const result = await this.instance.language.findMany({
-      where: { id: { in: data } },
+      where: { name: { in: data } },
     });
     return result.map((language) => {
       const repos = language.repos.map(RepoFactory.create);
