@@ -27,14 +27,12 @@ describe('Unit: Repo factory', () => {
       ],
       homePage: 'https://go.dev',
       stargazers: 109460,
-      languageId: new UniqueIdentifier().value,
       visibility: 'public',
     };
   });
 
   it('should build a Repo entity', () => {
     const repo = RepoFactory.create(repoProps);
-    expect(repo.id).toBeDefined();
     expect(repo).toBeInstanceOf(Repo);
     expect(repo.githubId).toStrictEqual(repoProps.githubId);
     expect(repo.name).toStrictEqual(repoProps.name);
@@ -46,7 +44,6 @@ describe('Unit: Repo factory', () => {
     expect(repo.contributors).toStrictEqual(repoProps.contributors);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
-    expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 
@@ -57,7 +54,6 @@ describe('Unit: Repo factory', () => {
       id,
     });
     expect(repo).toBeInstanceOf(Repo);
-    expect(repo.id).toStrictEqual(id);
     expect(repo.githubId).toStrictEqual(repoProps.githubId);
     expect(repo.name).toStrictEqual(repoProps.name);
     expect(repo.description).toStrictEqual(repoProps.description);
@@ -68,7 +64,6 @@ describe('Unit: Repo factory', () => {
     expect(repo.contributors).toStrictEqual(repoProps.contributors);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
-    expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 });
