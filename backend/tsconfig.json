@@ -8,11 +8,6 @@
     "sourceMap": true,
     "target": "ES2020",
     "baseUrl": "./src",
-    "paths": {
-      "@application/*": ["application/*"],
-      "@domain/*": ["domain/*"],
-      "@infra/*": ["infra/*"]
-    },
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
