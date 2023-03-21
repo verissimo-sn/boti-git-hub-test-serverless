@@ -11,7 +11,7 @@ describe('Unit: Language factory', () => {
     const language = LanguageFactory.create(props);
     expect(language).toBeInstanceOf(Language);
     expect(language.id).toBeDefined();
-    expect(language.name).toStrictEqual(props.name);
+    expect(language.name).toStrictEqual(props.name.toLowerCase());
   });
 
   it('should build a language entity all props', () => {
@@ -22,7 +22,7 @@ describe('Unit: Language factory', () => {
     const language = LanguageFactory.create(props);
     expect(language).toBeInstanceOf(Language);
     expect(language.id).toStrictEqual(props.id);
-    expect(language.name).toStrictEqual(props.name);
+    expect(language.name).toStrictEqual(props.name.toLowerCase());
   });
 
   it('should build a language entity with repo', () => {
@@ -56,7 +56,7 @@ describe('Unit: Language factory', () => {
     const language = LanguageFactory.createWithoutRepo(props, [repo]);
     expect(language).toBeInstanceOf(Language);
     expect(language.id).toStrictEqual(props.id);
-    expect(language.name).toStrictEqual(props.name);
+    expect(language.name).toStrictEqual(props.name.toLowerCase());
     expect(language.repos.length).toBe(1);
   });
 });
