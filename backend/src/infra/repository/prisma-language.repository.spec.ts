@@ -74,7 +74,7 @@ describe('Integration: PrismaLanguageRepository', () => {
     });
     expect(foundLanguage).toEqual({
       id: language.id,
-      name: language.name,
+      name: language.name.toLocaleLowerCase(),
       repos: [
         {
           githubId: language.repos[0].githubId,
@@ -100,6 +100,8 @@ describe('Integration: PrismaLanguageRepository', () => {
     ]);
     expect(foundLanguages[0]).toBeInstanceOf(Language);
     expect(foundLanguages[0].id).toBe(fakeLanguages[0].id);
-    expect(foundLanguages[0].name).toBe(fakeLanguages[0].name);
+    expect(foundLanguages[0].name).toBe(
+      fakeLanguages[0].name.toLocaleLowerCase()
+    );
   });
 });
