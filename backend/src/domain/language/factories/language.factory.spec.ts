@@ -51,7 +51,6 @@ describe('Unit: Language factory', () => {
       ],
       homePage: 'https://go.dev',
       stargazers: 109460,
-      languageId: props.id,
       visibility: 'public',
     });
     const language = LanguageFactory.createWithoutRepo(props, [repo]);
@@ -59,6 +58,5 @@ describe('Unit: Language factory', () => {
     expect(language.id).toStrictEqual(props.id);
     expect(language.name).toStrictEqual(props.name);
     expect(language.repos.length).toBe(1);
-    expect(language.repos[0].languageId).toStrictEqual(repo.languageId);
   });
 });
