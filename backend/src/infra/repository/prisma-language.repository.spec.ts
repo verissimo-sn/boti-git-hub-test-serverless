@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
 import ILanguageRepository from '../../application/repository/language.repository';
+import UniqueIdentifier from '../../domain/@shared/value-objects/unique-identifier';
 import Language from '../../domain/language/entity/language';
 import LanguageFactory from '../../domain/language/factories/language.factory';
 import RepoFactory from '../../domain/repo/factories/repo.factory';
@@ -8,19 +9,33 @@ import IConnection from '../database/connection';
 import PrismaAdapter from '../database/prisma-adapter';
 import PrismaLanguageRepository from './prisma-language.repository';
 
-describe('PrismaLanguageRepository', () => {
+describe('Integration: PrismaLanguageRepository', () => {
   let adapter: IConnection<PrismaClient>;
   let repository: ILanguageRepository;
+  const fakeLanguages = [
+    {
+      id: new UniqueIdentifier().value,
+      name: 'Go',
+      repos: [],
+    },
+    {
+      id: new UniqueIdentifier().value,
+      name: 'JavaScript',
+      repos: [],
+    },
+  ];
 
-  beforeEach(async () => {
-    process.env.DATABASE_URL = 'mongodb://localhost:27017/gb_languages_test';
+  beforeAll(async () => {
+    process.env.DATABASE_URL = `${process.env.DATABASE_URL}_test`;
     adapter = new PrismaAdapter();
     repository = new PrismaLanguageRepository(adapter);
+    await adapter.connect().language.createMany({
+      data: fakeLanguages,
+    });
   });
 
   afterAll(async () => {
-    const prisma = await adapter.connect();
-    await prisma.repo.deleteMany();
+    const prisma = adapter.connect();
     await prisma.language.deleteMany();
     prisma.$disconnect();
   });
@@ -48,12 +63,11 @@ describe('PrismaLanguageRepository', () => {
       ],
       homePage: 'https://go.dev',
       stargazers: 109460,
-      languageId: props.id,
       visibility: 'public',
     });
     const language = LanguageFactory.createWithoutRepo(props, [repo]);
     await repository.createMany([language]);
-    const prisma = await adapter.connect();
+    const prisma = adapter.connect();
     const foundLanguage = await prisma.language.findFirst({
       where: { id: language.id },
       include: { repos: true },
@@ -63,7 +77,6 @@ describe('PrismaLanguageRepository', () => {
       name: language.name,
       repos: [
         {
-          id: language.repos[0].id,
           githubId: language.repos[0].githubId,
           name: language.repos[0].name,
           description: language.repos[0].description,
@@ -74,10 +87,19 @@ describe('PrismaLanguageRepository', () => {
           contributors: language.repos[0].contributors,
           homePage: language.repos[0].homePage,
           stargazers: language.repos[0].stargazers,
-          languageId: language.repos[0].languageId,
           visibility: language.repos[0].visibility,
         },
       ],
     });
+  });
+
+  it('should find many languages by id', async () => {
+    const foundLanguages = await repository.getManyByIds([
+      fakeLanguages[0].id,
+      fakeLanguages[1].id,
+    ]);
+    expect(foundLanguages[0]).toBeInstanceOf(Language);
+    expect(foundLanguages[0].id).toBe(fakeLanguages[0].id);
+    expect(foundLanguages[0].name).toBe(fakeLanguages[0].name);
   });
 });
