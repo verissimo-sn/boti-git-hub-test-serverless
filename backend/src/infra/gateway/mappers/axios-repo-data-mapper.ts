@@ -2,10 +2,7 @@ import Repo from '../../../domain/repo/entity/repo';
 import RepoFactory from '../../../domain/repo/factories/repo.factory';
 
 export default class AxiosGithubRepoDataMapper {
-  static toRepoPropList(
-    githubRepoList: GithubRepoItem[],
-    languageId: string
-  ): Repo[] {
+  static toRepoPropList(githubRepoList: GithubRepoItem[]): Repo[] {
     return githubRepoList.map((gitRepo) => {
       return RepoFactory.create({
         githubId: gitRepo.id,
@@ -27,7 +24,6 @@ export default class AxiosGithubRepoDataMapper {
         homePage: gitRepo.homepage,
         stargazers: gitRepo.stargazers_count,
         visibility: gitRepo.visibility,
-        languageId,
       });
     });
   }

@@ -30,10 +30,7 @@ export default class RepoGatewayHttp implements IRepoGateway {
         };
       })
     );
-    return AxiosGithubRepoDataMapper.toRepoPropList(
-      repoWithContributors,
-      language.id
-    );
+    return AxiosGithubRepoDataMapper.toRepoPropList(repoWithContributors);
   }
 
   private async getContributors(

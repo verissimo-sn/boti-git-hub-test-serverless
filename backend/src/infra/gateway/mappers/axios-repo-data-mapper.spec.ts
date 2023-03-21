@@ -1,10 +1,8 @@
 import axiosRepoFakeData from '../../../../mocks/get-repos-github-mock.json';
-import Language from '../../../domain/language/entity/language';
 import AxiosGithubRepoDataMapper from './axios-repo-data-mapper';
 
 describe('Unit: AxiosRepoDataMapper', () => {
   it('should map repo data', () => {
-    const language = new Language('JavaScript');
     const contributor = {
       login: 'fake_url',
       avatar_url: 'fake_url',
@@ -14,10 +12,7 @@ describe('Unit: AxiosRepoDataMapper', () => {
       ...repo,
       contributors: [contributor],
     }));
-    const mapper = AxiosGithubRepoDataMapper.toRepoPropList(
-      fakeAxiosData,
-      language.id
-    );
+    const mapper = AxiosGithubRepoDataMapper.toRepoPropList(fakeAxiosData);
     expect(mapper).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -42,7 +37,6 @@ describe('Unit: AxiosRepoDataMapper', () => {
           homePage: expect.any(String),
           stargazers: expect.any(Number),
           visibility: expect.any(String),
-          languageId: language.id,
         }),
       ])
     );
