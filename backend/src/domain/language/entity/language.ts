@@ -4,11 +4,13 @@ import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
 import Repo from '../../repo/entity/repo';
 
 export default class Language {
+  private readonly _name: string;
   private readonly _id: UniqueIdentifier;
   private readonly _repos: Repo[] = [];
 
-  constructor(private readonly _name: string, id?: string) {
+  constructor(name: string, id?: string) {
     this._id = id ? new UniqueIdentifier(id) : new UniqueIdentifier();
+    this._name = name.toLowerCase();
     this.validate();
   }
 
