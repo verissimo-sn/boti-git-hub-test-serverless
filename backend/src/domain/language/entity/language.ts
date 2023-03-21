@@ -35,7 +35,6 @@ export default class Language {
 
   get repos() {
     return this._repos.map((repo) => ({
-      id: repo.id,
       githubId: repo.githubId,
       name: repo.name,
       description: repo.description,
@@ -46,7 +45,6 @@ export default class Language {
       contributors: repo.contributors,
       homePage: repo.homePage,
       stargazers: repo.stargazers,
-      languageId: repo.languageId,
       visibility: repo.visibility,
     }));
   }

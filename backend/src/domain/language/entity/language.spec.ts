@@ -51,7 +51,6 @@ describe('Unit: Language entity', () => {
       ],
       homePage: 'https://go.dev',
       stargazers: 109460,
-      languageId: language.id,
       license: 'bsd-3-clause',
       visibility: 'public',
     };
@@ -62,7 +61,6 @@ describe('Unit: Language entity', () => {
     expect(language.repos).toHaveLength(1);
     expect(language.repos[0]).toEqual(
       expect.objectContaining({
-        id: expect.any(String),
         githubId: repoProps.githubId,
         name: repoProps.name,
         description: repoProps.description,
@@ -83,7 +81,6 @@ describe('Unit: Language entity', () => {
         ],
         homePage: repoProps.homePage,
         stargazers: repoProps.stargazers,
-        languageId: repoProps.languageId,
         visibility: repoProps.visibility,
       })
     );
