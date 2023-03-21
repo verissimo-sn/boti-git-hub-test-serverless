@@ -1,13 +1,9 @@
 import { z } from 'zod';
 
-import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
 import Contributor from '../value-object/contributor';
 import Owner from '../value-object/owner';
 
 export default class Repo {
-  private readonly _id: UniqueIdentifier;
-  private readonly _languageId: UniqueIdentifier;
-
   constructor(
     private readonly _githubId: number,
     private readonly _name: string,
@@ -19,18 +15,13 @@ export default class Repo {
     private readonly _contributors: Contributor[],
     private readonly _homePage: string,
     private readonly _stargazers: number,
-    languageId: string,
-    private readonly _visibility: string,
-    id?: string
+    private readonly _visibility: string
   ) {
-    this._id = id ? new UniqueIdentifier(id) : new UniqueIdentifier();
-    this._languageId = new UniqueIdentifier(languageId);
     this.validate();
   }
 
   private validate() {
     const repoSchema = z.object({
-      id: z.string().nonempty(),
       githubId: z.number(),
       name: z.string().nonempty(),
       description: z.string().nonempty(),
@@ -41,11 +32,9 @@ export default class Repo {
       contributors: z.array(z.any()).nonempty(),
       homePage: z.any().default(''),
       stargazers: z.number(),
-      languageId: z.string().nonempty(),
       visibility: z.string(),
     });
     repoSchema.parse({
-      id: this.id,
       githubId: this.githubId,
       name: this.name,
       description: this.description,
@@ -56,13 +45,8 @@ export default class Repo {
       contributors: this.contributors,
       homePage: this.homePage,
       stargazers: this.stargazers,
-      languageId: this.languageId,
       visibility: this.visibility,
     });
-  }
-
-  get id(): string {
-    return this._id.value;
   }
   get githubId(): number {
     return this._githubId;
@@ -101,9 +85,6 @@ export default class Repo {
   }
   get stargazers(): number {
     return this._stargazers;
-  }
-  get languageId(): string {
-    return this._languageId.value;
   }
   get visibility(): string {
     return this._visibility;

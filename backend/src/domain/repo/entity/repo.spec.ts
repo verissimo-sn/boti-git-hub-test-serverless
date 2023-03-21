@@ -1,4 +1,3 @@
-import UniqueIdentifier from '../../@shared/value-objects/unique-identifier';
 import Contributor from '../value-object/contributor';
 import Owner from '../value-object/owner';
 import Repo from './repo';
@@ -30,7 +29,6 @@ describe('Unit: Repo entity', () => {
       contributors: [contributor],
       homePage: 'https://go.dev',
       stargazers: 109460,
-      languageId: new UniqueIdentifier().value,
       visibility: 'public',
     };
   });
@@ -47,10 +45,8 @@ describe('Unit: Repo entity', () => {
       repoProps.contributors,
       repoProps.homePage,
       repoProps.stargazers,
-      repoProps.languageId,
       repoProps.visibility
     );
-    expect(repo.id).toBeDefined();
     expect(repo.githubId).toStrictEqual(repoProps.githubId);
     expect(repo.name).toStrictEqual(repoProps.name);
     expect(repo.description).toStrictEqual(repoProps.description);
@@ -68,12 +64,10 @@ describe('Unit: Repo entity', () => {
     expect(repo.contributors[0].pageUrl).toStrictEqual(contributor.pageUrl);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
-    expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 
   it('should restore a repo', () => {
-    const id = new UniqueIdentifier().value;
     const repo = new Repo(
       repoProps.githubId,
       repoProps.name,
@@ -85,11 +79,8 @@ describe('Unit: Repo entity', () => {
       repoProps.contributors,
       repoProps.homePage,
       repoProps.stargazers,
-      repoProps.languageId,
-      repoProps.visibility,
-      id
+      repoProps.visibility
     );
-    expect(repo.id).toStrictEqual(id);
     expect(repo.githubId).toStrictEqual(repoProps.githubId);
     expect(repo.name).toStrictEqual(repoProps.name);
     expect(repo.description).toStrictEqual(repoProps.description);
@@ -107,7 +98,6 @@ describe('Unit: Repo entity', () => {
     expect(repo.contributors[0].pageUrl).toStrictEqual(contributor.pageUrl);
     expect(repo.homePage).toStrictEqual(repoProps.homePage);
     expect(repo.stargazers).toStrictEqual(repoProps.stargazers);
-    expect(repo.languageId).toStrictEqual(repoProps.languageId);
     expect(repo.visibility).toStrictEqual(repoProps.visibility);
   });
 
@@ -125,7 +115,6 @@ describe('Unit: Repo entity', () => {
           repoProps.contributors,
           '',
           repoProps.stargazers,
-          '',
           ''
         )
     ).toThrowError();
