@@ -10,7 +10,7 @@ export default class PrismaAdapter implements IConnection<PrismaClient> {
     this.connection = prisma;
   }
 
-  async connect(): Promise<PrismaClient> {
+  connect(): PrismaClient {
     return this.connection;
   }
 

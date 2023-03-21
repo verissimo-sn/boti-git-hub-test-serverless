@@ -1,4 +1,4 @@
 export default interface IConnection<T> {
-  connect(): Promise<T>;
+  connect(): T;
   disconnect(): Promise<void>;
 }
