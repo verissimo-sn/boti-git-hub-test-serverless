@@ -16,10 +16,7 @@ model Language {
   repos Repo[]
 }
 
-model Repo {
-  id           String         @id @map("_id")
-  language     Language       @relation(fields: [languageId], references: [id])
-  languageId   String
+type Repo {
   name         String
   description  String?
   githubId     Int
