@@ -15,7 +15,7 @@ functions:
     handler: src/functions/get-best-languages/handler.main
     events:
       - http:
-          path: /best-languages
+          path: /repo-by-languages
           method: get
 
 package:
