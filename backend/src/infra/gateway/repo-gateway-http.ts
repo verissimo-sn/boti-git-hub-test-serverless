@@ -7,7 +7,7 @@ import AxiosGithubRepoDataMapper, {
 } from './mappers/axios-repo-data-mapper';
 
 export default class RepoGatewayHttp implements IRepoGateway {
-  private readonly baseUrl = 'https://api.github.com';
+  private readonly baseUrl = process.env.GITHUB_BASE_URL;
 
   constructor(private readonly httpClient: IHttpClient) { }
 
