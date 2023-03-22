@@ -7,6 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "sls offline start -s dev",
+    "predeploy": "npx prisma generate",
+    "deploy": "npx sls deploy --verbose",
     "test": "jest --runInBand --detectOpenHandles",
     "test:watch": "jest --watch --runInBand --detectOpenHandles",
     "test:coverage": "jest --coverage --runInBand --detectOpenHandles"

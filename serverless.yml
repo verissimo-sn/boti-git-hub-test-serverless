@@ -2,10 +2,10 @@ service: gb-tech-test
 frameworkVersion: '3'
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-auto-swagger
   - serverless-esbuild
   - serverless-offline
-  - serverless-dotenv-plugin
 
 provider:
   name: aws
@@ -29,6 +29,9 @@ functions:
               description: Method not allowed
               bodyType: 'GetReposByLanguageResponse405'
             500:
+              description: Internal Error
+              bodyType: 'GetReposByLanguageResponseError'
+            default:
               description: Internal Error
               bodyType: 'GetReposByLanguageResponseError'
 

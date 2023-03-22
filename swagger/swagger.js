@@ -39,6 +39,12 @@
             "schema": {
               "$ref": "#/definitions/GetReposByLanguageResponseError"
             }
+          },
+          "default": {
+            "description": "Internal Error",
+            "schema": {
+              "$ref": "#/definitions/GetReposByLanguageResponseError"
+            }
           }
         }
       }
