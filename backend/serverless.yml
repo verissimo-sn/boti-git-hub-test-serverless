@@ -28,7 +28,7 @@ functions:
             405:
               description: Method not allowed
               bodyType: 'GetReposByLanguageResponse405'
-            default:
+            500:
               description: Internal Error
               bodyType: 'GetReposByLanguageResponseError'
 

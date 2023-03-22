@@ -34,7 +34,7 @@
               "$ref": "#/definitions/GetReposByLanguageResponse405"
             }
           },
-          "default": {
+          "500": {
             "description": "Internal Error",
             "schema": {
               "$ref": "#/definitions/GetReposByLanguageResponseError"
