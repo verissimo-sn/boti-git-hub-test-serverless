@@ -40,7 +40,6 @@ const useCase = new GetReposByLanguagesUseCase(
 );
 
 export const main = async (event: APIGatewayProxyEvent) => {
-  console.log(process.env.GITHUB_BEARER_TOKEN);
   if (event?.httpMethod !== 'GET') {
     return {
       statusCode: 405,
