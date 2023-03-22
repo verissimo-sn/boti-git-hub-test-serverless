@@ -1,7 +1,10 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import axios from 'axios';
 
-import GetBestLanguagesUseCase from '../../application/useCase/get-best-languages-repos';
+import GetLanguageFromGithubService from '../../application/services/get-language-from-github.service';
+import GetRegisteredLanguagesService from '../../application/services/get-registered-languages.service';
+import SaveUnregisteredLanguagesService from '../../application/services/save-unregistered-languages.service';
+import GetReposByLanguagesUseCase from '../../application/useCase/get-repos-by-languages.useCase';
 import PrismaAdapter from '../../infra/database/prisma-adapter';
 import RepoGatewayHttp from '../../infra/gateway/repo-gateway-http';
 import AxiosAdapter from '../../infra/http/axios-adapter';
@@ -21,13 +24,26 @@ const httpAdapter = new AxiosAdapter(axiosInstance);
 const repoGateway = new RepoGatewayHttp(httpAdapter);
 const dbAdapter = new PrismaAdapter();
 const languageRepository = new PrismaLanguageRepository(dbAdapter);
-const useCase = new GetBestLanguagesUseCase(repoGateway, languageRepository);
+const getRegisteredLanguagesService = new GetRegisteredLanguagesService(
+  languageRepository
+);
+const getLanguageFromGithubService = new GetLanguageFromGithubService(
+  repoGateway
+);
+const saveUnregisteredLanguagesService = new SaveUnregisteredLanguagesService(
+  languageRepository
+);
+const useCase = new GetReposByLanguagesUseCase(
+  getRegisteredLanguagesService,
+  getLanguageFromGithubService,
+  saveUnregisteredLanguagesService
+);
 
 export const main = async (event: APIGatewayProxyEvent) => {
   console.log(process.env.GITHUB_BEARER_TOKEN);
   if (event?.httpMethod !== 'GET') {
     return {
-      statusCode: 400,
+      statusCode: 405,
       body: JSON.stringify({
         message: 'Method not allowed',
         data: null,
