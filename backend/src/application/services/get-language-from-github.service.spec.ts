@@ -5,7 +5,7 @@ import IRepoGateway from '../gateway/repo-gateway';
 import GetLanguageFromGithubService from './get-language-from-github.service';
 import IService from './services.interface';
 
-describe('Unit: GetLanguageFromGithubService', () => {
+describe('Integration: GetLanguageFromGithubService', () => {
   let httpAdapter: any;
   let repoGateway: IRepoGateway;
   let service: IService<string[], Language[]>;
@@ -16,6 +16,10 @@ describe('Unit: GetLanguageFromGithubService', () => {
     };
     repoGateway = new RepoGatewayHttp(httpAdapter as any);
     service = new GetLanguageFromGithubService(repoGateway);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should return an array of languages', async () => {
