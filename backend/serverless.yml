@@ -2,6 +2,7 @@ service: gb-tech-test
 frameworkVersion: '3'
 
 plugins:
+  - serverless-auto-swagger
   - serverless-esbuild
   - serverless-offline
   - serverless-dotenv-plugin
@@ -9,6 +10,8 @@ plugins:
 provider:
   name: aws
   runtime: nodejs18.x
+  stage: ${sls:stage}
+  memorySize: 256
 
 functions:
   GetBestLanguages:
@@ -17,6 +20,17 @@ functions:
       - http:
           path: /repo-by-languages
           method: get
+          swaggerTags: ["GITHUB"]
+          responses:
+            200:
+              description: Success
+              bodyType: 'GetReposByLanguageResponse'
+            405:
+              description: Method not allowed
+              bodyType: 'GetReposByLanguageResponse405'
+            default:
+              description: Internal Error
+              bodyType: 'GetReposByLanguageResponseError'
 
 package:
   individually: true
@@ -28,3 +42,12 @@ custom:
     exclude: ['aws-sdk']
     target: 'node18'
     platform: 'node'
+  autoswagger:
+    title: "GB Tech Test Github"
+    apiType: "http"
+    generateSwaggerOnDeploy: true
+    typefiles: ["./doc/types/doc-types.d.ts"]
+    swaggerPath: "api-docs"
+    useStage: false
+    basePath: "/${sls:stage}"
+    schemes: ["https", "http"]

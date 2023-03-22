@@ -42,6 +42,7 @@
     "prettier": "^2.5.1",
     "prisma": "^4.11.0",
     "serverless": "^3.26.0",
+    "serverless-auto-swagger": "^2.12.0",
     "serverless-dotenv-plugin": "^6.0.0",
     "serverless-esbuild": "^1.41.0",
     "serverless-offline": "^12.0.4",
