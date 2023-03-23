@@ -5,13 +5,20 @@
 
 Teste para avaliar tecnicamente candidato para a vaga de desenvolvedor node serverless.
 
+## Link dos projetos publicados
+  - [API](https://cnrugpxsw2.execute-api.us-east-2.amazonaws.com/dev/repo-by-languages)
+  - [Front-end](https://vercel.com/verissimo-sn/boti-git-hub-test-ui)
+
 ## Como rodar localmente
 
 ### Variáveis de ambiente:
-  - Crie um arquivo `.env` na raiz do projeto com as seguintes chaves:
-    - GITHUB_BEARER_TOKEN - Token gerado na conta do github [Como gerar seu token](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api?apiVersion=2022-11-28)
-    - GITHUB_BASE_URL - https://api.github.com
-    - DATABASE_URL - Url de conexão com mongoDb
+  - Crie um arquivo `.env` na raiz das pastas `/backend` e `/frontend` com as seguintes chaves:
+    - Backend
+      - GITHUB_BEARER_TOKEN - Token gerado na conta do github [COMO GERAR SUA CHAVE](https://docs.github.com/en/rest/overview/authenticating-to-the-rest-api?apiVersion=2022-11-28)
+      - GITHUB_BASE_URL - https://api.github.com
+      - DATABASE_URL - Url de conexão com mongoDb
+    - Frontend
+      - BACKEND_BASE_URL - Url que está rodando o backend
 
 ### Banco de dados
  - Tenha instalado docker e docker compose
