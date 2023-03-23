@@ -3,7 +3,7 @@
 * Autor: José Veríssimo dos Santos Sacramento neto
 * Desafio: “Listar os repositórios destaque do GitHub de cinco linguagens”.
 
-Teste para avaliar tecnicamente cadidato para a vaga de desenvolvedor node serverless.
+Teste para avaliar tecnicamente candidato para a vaga de desenvolvedor node serverless.
 
 ## Como rodar localmente
 
@@ -32,10 +32,10 @@ Teste para avaliar tecnicamente cadidato para a vaga de desenvolvedor node serve
 
 ### Testes Automatizados
   - Para executar os testes, abra a pasta `/backend` ou `/frontend` e rode o comando ```npm test```
-  > Dessa forma seram executados todos os testes da aplicação. Para o backend, é necessário estar com banco de dados configurado.
+  > Dessa forma serão executados todos os testes da aplicação. Para o backend, é necessário estar com banco de dados configurado.
 ---
 
-### Requisítos:
+### Requisitos:
 - [x] NodeJS;
 - [x] Serverless;
 - [x] Banco de dados;
@@ -49,13 +49,13 @@ Teste para avaliar tecnicamente cadidato para a vaga de desenvolvedor node serve
 - [x] Armazenar as informações encontradas em banco de dados;
 
 ### Desafio:
-- [x] O deploy em um ambiente público;
+- [] O deploy em um ambiente público;
 - [x] Front-end para listar os repositórios encontrados;
 
 ---
 ## Conceitos utilizados:
-Foram utilizados nesse projeto os cenceitos:
-  - `Desenvolvimento orientado a testes`, que facilita o entendimento das funcionalidade que estão sendo desenvolvidas, tendo assim etapas de criação e validação formando um ciclo que garando uma melhor qualidad de entrega de código.
+Foram utilizados nesse projeto os conceitos:
+  - `Desenvolvimento orientado a testes`, que facilita o entendimento das funcionalidade que estão sendo desenvolvidas, tendo assim etapas de criação e validação formando um ciclo que garnado uma melhor qualidade de entrega de código.
   - `Arquitetura Hexagonal`, um padrão de design de software que visa desacoplamento daquilo é conectado a aplicação, facilitando uma possível substituição desses conectores.
   - `Domain-Driven Design` e `Clean Architecture`, um conjunto de princípios e patterns que ajudam a criar um software em camadas com o domínio bem protegido dos outros componentes da aplicação, visando garantir a invariância das entidades de negócio.
   - `SOLID`, alguns princípios para facilitar a manutenção, criação e entendimento do software.
@@ -63,7 +63,7 @@ Foram utilizados nesse projeto os cenceitos:
 --- 
 
 ## Fluxo lógico que utilizei para implementação do backend:
- - Quando a Lambda é executada, é feita uma busca no banco de dados a partir do nome das linguagens preveamente escolhidos. Com o retorno do banco de dados, é feito um diff do que foi encontrado no banco e o que foi solicitado, em seguida a aplicação busca as informações das linguagens que não foram encontradas à API do github, em seguida guarda no banco os novos dados buscados e retorna a mescla dos dados como resposta da requisição.
+ - Quando a Lambda é executada, é feita uma busca no banco de dados a partir do nome das linguagens previamente escolhidos. Com o retorno do banco de dados, é feito um diff do que foi encontrado no banco e o que foi solicitado, em seguida a aplicação busca as informações das linguagens que não foram encontradas à API do github, em seguida guarda no banco os novos dados buscados e retorna a mescla dos dados como resposta da requisição.
     
      ![](doc/github/diagram.png)
   > Fluxo da aplicação 
