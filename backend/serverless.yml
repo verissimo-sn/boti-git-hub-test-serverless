@@ -11,6 +11,7 @@ provider:
   name: aws
   runtime: nodejs18.x
   stage: ${sls:stage}
+  region: us-east-2
   memorySize: 256
   timeout: 60
 
@@ -37,7 +38,9 @@ functions:
               bodyType: 'GetReposByLanguageResponseError'
 
 package:
-  individually: true
+  include:
+    - 'node_modules/.prisma/client/schema.prisma'
+
 
 custom:
   esbuild:

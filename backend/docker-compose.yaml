@@ -1,0 +1,12 @@
+# Use root/example as user/password credentials
+version: '3'
+
+services:
+  db:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: gb_tech
+    ports:
+      - 27017:27017
