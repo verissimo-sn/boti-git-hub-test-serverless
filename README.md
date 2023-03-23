@@ -49,7 +49,7 @@ Teste para avaliar tecnicamente candidato para a vaga de desenvolvedor node serv
 - [x] Armazenar as informações encontradas em banco de dados;
 
 ### Desafio:
-- [] O deploy em um ambiente público;
+- [x] O deploy em um ambiente público;
 - [x] Front-end para listar os repositórios encontrados;
 
 ---
