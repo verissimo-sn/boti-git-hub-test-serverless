@@ -7,7 +7,7 @@ Teste para avaliar tecnicamente candidato para a vaga de desenvolvedor node serv
 
 ## Link dos projetos publicados
   - [API](https://cnrugpxsw2.execute-api.us-east-2.amazonaws.com/dev/repo-by-languages)
-  - [Front-end](https://vercel.com/verissimo-sn/boti-git-hub-test-ui)
+  - [Front-end](https://boti-git-hub-test-mlqpn2pp4-verissimo-sn.vercel.app/)
 
 ## Como rodar localmente
 
